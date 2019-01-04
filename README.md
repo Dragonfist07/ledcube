@@ -21,6 +21,8 @@ java -version
 ```
 
 ### pi4j Installation
+Installiert die nötigen Bibliotheken um GPIOs aus Java anzusprechen
+http://pi4j.com/#
 ```
 wget http://get.pi4j.com/download/pi4j-1.2-SNAPSHOT.deb
 sudo dpkg -i pi4j-1.2-SNAPSHOT.deb
