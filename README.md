@@ -32,3 +32,8 @@ Nach erfolgreicher Installation sollte die Version mit folgendem Befehl angezeig
 ```
 pi4j -v
 ```
+
+### Git Installation
+```
+sudo apt-get install git
+```
