@@ -33,7 +33,21 @@ Nach erfolgreicher Installation sollte die Version mit folgendem Befehl angezeig
 pi4j -v
 ```
 
+### WiringPi Installation
+```
+cd
+git clone git://git.drogon.net/wiringPi
+cd ~/wiringPi
+git pull origin
+cd ~/wiringPi
+./build
+```
+
 ### Git Installation
 ```
 sudo apt-get install git
+sudo git clone https://github.com/Dragonfist07/ledcube.git
+cd ledcube
+
+sudo git pull
 ```
