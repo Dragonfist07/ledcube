@@ -1,15 +1,16 @@
-import http://com.pi4j.io.spi.SpiChannel;
-import http://com.pi4j.io.spi.SpiDevice;
-import http://com.pi4j.io.spi.SpiFactory;
-import http://com.pi4j.io.gpio.GpioController;
-import http://com.pi4j.io.gpio.GpioFactory;
-import http://com.pi4j.io.gpio.GpioPinDigitalOutput;
-import http://com.pi4j.io.gpio.PinState;
-import http://com.pi4j.io.gpio.RaspiPin;
-import com.pi4j.util.Console;
-import http://java.io.IOException;
+import java.io.IOException;
 
-public class javatest {
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.spi.SpiChannel;
+import com.pi4j.io.spi.SpiDevice;
+import com.pi4j.io.spi.SpiFactory;
+import com.pi4j.util.Console;
+
+public class AlexColorFade {
 
 	public static int c1 = 0;
 	public static int c2 = 0;
