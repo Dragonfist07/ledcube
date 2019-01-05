@@ -91,19 +91,8 @@ public class TimedAnimationTest {
 	}
 
 	private void doAnimationUpdates(double delta) {
-//		for (int i = 0; i < stuff.size(); i++) {
-//			// all time-related values must be multiplied by delta!
-//			Stuff s = stuff.get(i);
-//			s.velocity += Gravity.VELOCITY * delta;
-//			s.position += s.velocity * delta;
-//
-//			// stuff that isn't time-related doesn't care about delta...
-//			if (s.velocity >= 1000) {
-//				s.color = Color.RED;
-//			} else {
-//				s.color = Color.BLUE;
-//			}
-//		}
+		plane = 0b00000001;
+		red[0] = (byte)0b11111111;
 	}
 
 }
