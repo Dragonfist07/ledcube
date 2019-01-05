@@ -45,7 +45,7 @@ public class TimedAnimationTest {
 
 	public void mainLoop() throws IOException {
 		long lastLoopTime = System.nanoTime();
-		final int TARGET_FPS = 60;
+		final int TARGET_FPS = 480;
 		final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 		while (console.isRunning()) {
