@@ -70,7 +70,7 @@ public class TimedAnimationTest {
 			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
 			if (time > 0) {
 				try {
-					Thread.sleep(1);
+					Thread.sleep(time);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
