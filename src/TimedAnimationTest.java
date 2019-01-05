@@ -86,8 +86,8 @@ public class TimedAnimationTest {
 		spi.write(red);
 		spi.write(plane);
 		
-		pinLatch.toggle();
-		pinLatch.toggle();
+//		pinLatch.toggle();
+//		pinLatch.toggle();
 	}
 
 	private void doAnimationUpdates(double delta) {
