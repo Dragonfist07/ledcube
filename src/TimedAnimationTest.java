@@ -66,11 +66,12 @@ public class TimedAnimationTest {
 			doAnimationUpdates(delta);
 
 			render();
-
+			
+			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
 	    	try {
-				Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );
+				Thread.sleep(time);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				System.out.println("Sleeptime: " + time);
 				e.printStackTrace();
 			}
 
