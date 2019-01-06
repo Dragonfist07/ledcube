@@ -11,7 +11,7 @@ import com.pi4j.io.spi.SpiDevice;
 import com.pi4j.io.spi.SpiFactory;
 import com.pi4j.util.Console;
 
-public class TimedAnimationTest {
+public class TimedAnimationTest2 {
 	
     public static SpiDevice spi = null;
     protected static final Console console = new Console();
@@ -25,13 +25,17 @@ public class TimedAnimationTest {
 	private long lastFpsTime = 0;
 	private int fps = 0;
 	
-	private byte[] red = new byte[8];
-	private byte[] green = new byte[8];
-	private byte[] blue = new byte[8];
-	private byte level;
+	private byte[][][] red = new byte[8][8][8];
+	private byte[][][] green = new byte[8][8][8];
+	private byte[][][] blue = new byte[8][8][8];
+	
+	private byte[] raw_red = new byte[8];
+	private byte[] raw_green = new byte[8];
+	private byte[] raw_blue = new byte[8];
+	private byte raw_plane;
 	
 	public static void main(String[] args) throws IOException {
-		TimedAnimationTest tat = new TimedAnimationTest();
+		TimedAnimationTest2 tat = new TimedAnimationTest2();
 		tat.init();
 		tat.mainLoop();
 	}
@@ -67,32 +71,32 @@ public class TimedAnimationTest {
 
 			render();
 			
-//			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
-//			if (time > 0) {
-//				try {
-//					Thread.sleep(time);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			} else System.out.println("Sleeptime: " + time);
+			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
+			if (time > 0) {
+				try {
+					Thread.sleep(time);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			} else System.out.println("Sleeptime: " + time);
 
 		}
 		console.emptyLine();
 	}
 
 	private void render() throws IOException {
-		spi.write(blue);
-		spi.write(green);
-		spi.write(red);
-		spi.write(level);
+		spi.write(raw_blue);
+		spi.write(raw_green);
+		spi.write(raw_red);
+		spi.write(raw_plane);
 		
 		pinLatch.toggle();
 		pinLatch.toggle();
 	}
 
 	private void doAnimationUpdates(double delta) {
-		level = 0b00000001;
-		red[0] = (byte)0b11111111;
+		raw_plane = 0b00000001;
+		raw_red[0] = (byte)0b11111111;
 	}
 
 }
