@@ -32,7 +32,7 @@ public class TimedAnimationTest2 {
 	private byte[] raw_red = new byte[8];
 	private byte[] raw_green = new byte[8];
 	private byte[] raw_blue = new byte[8];
-	private byte raw_plane;
+	private byte raw_level;
 	
 	public static void main(String[] args) throws IOException {
 		TimedAnimationTest2 tat = new TimedAnimationTest2();
@@ -83,19 +83,34 @@ public class TimedAnimationTest2 {
 		}
 		console.emptyLine();
 	}
+	
+	private void multiplexing(int stage) {
+		for (int i = 0; i < red[raw_level].length; i++) {
+			raw_red[i] = 0b00000000;
+			for (int j = 0; j < red[raw_level][i].length; j++) {
+				if (red[raw_level][i][j] > stage) raw_red[i] &= (0b00000001 << j);
+			}
+		}
+	}
 
 	private void render() throws IOException {
-		spi.write(raw_blue);
-		spi.write(raw_green);
-		spi.write(raw_red);
-		spi.write(raw_plane);
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				multiplexing(i);
+				spi.write(raw_blue);
+				spi.write(raw_green);
+				spi.write(raw_red);
+				spi.write(raw_level);
+			}
+			raw_level = (byte) (0b00000001 << i);
+		}
 		
 		pinLatch.toggle();
 		pinLatch.toggle();
 	}
 
 	private void doAnimationUpdates(double delta) {
-		raw_plane = 0b00000001;
+		raw_level = 0b00000001;
 		raw_red[0] = (byte)0b11111111;
 	}
 

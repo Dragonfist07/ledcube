@@ -91,7 +91,6 @@ public class TimedAnimationTest {
 	}
 
 	private void doAnimationUpdates(double delta) {
-		System.out.println(delta);
 		level = 0b00000001;
 		red[0] = (byte)0b11111111;
 	}
