@@ -85,10 +85,11 @@ public class TimedAnimationTest2 {
 	}
 	
 	private void multiplexing(int stage) {
-		for (int i = 0; i < red[raw_level].length; i++) {
+		int level = (int) (Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2));
+		for (int i = 0; i < red[level].length; i++) {
 			raw_red[i] = 0b00000000;
-			for (int j = 0; j < red[raw_level][i].length; j++) {
-				if (red[raw_level][i][j] > stage) raw_red[i] &= (0b00000001 << j);
+			for (int j = 0; j < red[level][i].length; j++) {
+				if (red[level][i][j] > stage) raw_red[i] &= (0b00000001 << j);
 			}
 		}
 	}
@@ -111,8 +112,8 @@ public class TimedAnimationTest2 {
 
 	private void doAnimationUpdates(double delta) {
 		for (int i = 0; i < red.length; i++) {
-			for (int j = 0; j < red.length; j++) {
-				for (int j2 = 0; j2 < red.length; j2++) {
+			for (int j = 0; j < red[i].length; j++) {
+				for (int j2 = 0; j2 < red[i][j].length; j2++) {
 					red[i][j][j2] = 7;
 				}
 			}
