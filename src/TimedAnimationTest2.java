@@ -50,7 +50,7 @@ public class TimedAnimationTest2 {
         for (int i = 0; i < red.length; i++) {
 			for (int j = 0; j < red[i].length; j++) {
 				for (int j2 = 0; j2 < red[i][j].length; j2++) {
-					red[i][j][j2] = 7;
+					red[i][j][j2] = 8;
 				}
 			}
 		}
@@ -118,7 +118,7 @@ public class TimedAnimationTest2 {
 				System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
 				level++;
 				if (level >= 8) level = 0;
-				raw_level = (byte) (0b00000001 << (level+1));
+				raw_level = (byte) (0b00000001 << level);
 			}
 		}
 		
