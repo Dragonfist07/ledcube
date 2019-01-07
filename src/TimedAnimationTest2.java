@@ -84,8 +84,7 @@ public class TimedAnimationTest2 {
 		console.emptyLine();
 	}
 	
-	private void multiplexing(int stage) {
-		int level = (int) Math.round((Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2)));
+	private void multiplexing(int stage, int level) {
 		for (int i = 0; i < red[level].length; i++) {
 			raw_red[i] = 0b00000000;
 			for (int j = 0; j < red[level][i].length; j++) {
@@ -96,14 +95,15 @@ public class TimedAnimationTest2 {
 
 	private void render() throws IOException {
 		for (int i = 0; i < 8; i++) {
+			int level = (int) Math.round((Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2)));
 			for (int j = 0; j < 8; j++) {
-				multiplexing(i);
+				multiplexing(i, level);
 				spi.write(raw_blue);
 				spi.write(raw_green);
 				spi.write(raw_red);
 				spi.write(raw_level);
 			}
-			raw_level = (byte) (0b00000001 << i);
+			raw_level = (byte)Integer.rotateLeft(raw_level, 1);;
 		}
 		
 		pinLatch.toggle();
