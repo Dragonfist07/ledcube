@@ -108,10 +108,12 @@ public class TimedAnimationTest2 {
 //				System.out.println("level: " + level);
 //				System.out.println("Stage: " + i);
 				multiplexing(i, level);
-				spi.write(raw_red);
-				spi.write(raw_red);
+				spi.write(raw_blue);
+				spi.write(raw_green);
 				spi.write(raw_red);
 				spi.write(raw_level);
+				pinLatch.toggle();
+				pinLatch.toggle();
 				//System.out.println("raw_level: " + raw_level);
 				//System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
 				level++;
@@ -120,8 +122,6 @@ public class TimedAnimationTest2 {
 			}
 		}
 		
-		pinLatch.toggle();
-		pinLatch.toggle();
 	}
 
 	private void doAnimationUpdates(double delta) {
