@@ -118,7 +118,7 @@ public class TimedAnimationTest2 {
 				System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
 				level++;
 				if (level >= 8) level = 0;
-				raw_level = (byte) (1 << level+1);
+				raw_level = (byte) (0b00000001 << (level+1));
 			}
 		}
 		
