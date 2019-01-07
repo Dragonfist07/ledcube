@@ -112,6 +112,8 @@ public class TimedAnimationTest2 {
 				spi.write(raw_green);
 				spi.write(raw_red);
 				spi.write(raw_level);
+				System.out.print("raw_level: " + raw_level);
+				System.out.println("raw_red: " + raw_red[i]);
 				level++;
 				if (level >= 8) level = 0;
 				raw_level = (byte) (1 << level+1);
