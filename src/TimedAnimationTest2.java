@@ -49,7 +49,7 @@ public class TimedAnimationTest2 {
 
 	public void mainLoop() throws IOException {
 		long lastLoopTime = System.nanoTime();
-		final int TARGET_FPS = 480;
+		final int TARGET_FPS = 60;
 		final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 		while (console.isRunning()) {
@@ -96,6 +96,7 @@ public class TimedAnimationTest2 {
 	private void render() throws IOException {
 		for (int i = 0; i < 8; i++) {
 			int level = (int) Math.round((Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2)));
+			System.out.println("level: " + level);
 			for (int j = 0; j < 8; j++) {
 				multiplexing(i, level);
 				spi.write(raw_blue);
