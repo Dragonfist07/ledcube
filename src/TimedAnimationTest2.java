@@ -110,8 +110,13 @@ public class TimedAnimationTest2 {
 	}
 
 	private void doAnimationUpdates(double delta) {
-		raw_level = 0b00000001;
-		raw_red[0] = (byte)0b11111111;
+		for (int i = 0; i < red.length; i++) {
+			for (int j = 0; j < red.length; j++) {
+				for (int j2 = 0; j2 < red.length; j2++) {
+					red[i][j][j2] = 7;
+				}
+			}
+		}
 	}
 
 }
