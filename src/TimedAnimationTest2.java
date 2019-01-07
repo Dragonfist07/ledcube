@@ -33,6 +33,7 @@ public class TimedAnimationTest2 {
 	private byte[] raw_green = new byte[8];
 	private byte[] raw_blue = new byte[8];
 	private byte raw_level = 0b00000001;
+	private int level = 1;
 	
 	public static void main(String[] args) throws IOException {
 		TimedAnimationTest2 tat = new TimedAnimationTest2();
@@ -95,16 +96,18 @@ public class TimedAnimationTest2 {
 
 	private void render() throws IOException {
 		for (int i = 0; i < 8; i++) {
-			int level = (int) Math.round((Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2)));
-			System.out.println("level: " + level);
 			for (int j = 0; j < 8; j++) {
+				System.out.println("level: " + level);
+				System.out.println("Stage: " + i);
 				multiplexing(i, level);
 				spi.write(raw_blue);
 				spi.write(raw_green);
 				spi.write(raw_red);
 				spi.write(raw_level);
+				level++;
+				if (level >= 8) level = 0;
+				raw_level = (byte) (1 << level);
 			}
-			raw_level = (byte)Integer.rotateLeft(raw_level, 1);;
 		}
 		
 		pinLatch.toggle();
