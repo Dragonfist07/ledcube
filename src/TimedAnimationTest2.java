@@ -50,7 +50,7 @@ public class TimedAnimationTest2 {
         for (int i = 0; i < red.length; i++) {
 			for (int j = 0; j < red[i].length; j++) {
 				for (int j2 = 0; j2 < red[i][j].length; j2++) {
-					red[i][j][j2] = 4;
+					red[i][j][j2] = 7;
 				}
 			}
 		}
