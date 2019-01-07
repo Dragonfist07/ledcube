@@ -85,7 +85,7 @@ public class TimedAnimationTest2 {
 	}
 	
 	private void multiplexing(int stage) {
-		int level = (int) (Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2));
+		int level = (int) Math.round((Math.log(Byte.toUnsignedInt(raw_level)) / Math.log(2)));
 		for (int i = 0; i < red[level].length; i++) {
 			raw_red[i] = 0b00000000;
 			for (int j = 0; j < red[level][i].length; j++) {
