@@ -32,7 +32,7 @@ public class TimedAnimationTest2 {
 	private byte[] raw_red = new byte[8];
 	private byte[] raw_green = new byte[8];
 	private byte[] raw_blue = new byte[8];
-	private byte raw_level;
+	private byte raw_level = 0b00000001;
 	
 	public static void main(String[] args) throws IOException {
 		TimedAnimationTest2 tat = new TimedAnimationTest2();
