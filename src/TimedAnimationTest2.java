@@ -97,7 +97,7 @@ public class TimedAnimationTest2 {
 		for (int i = 0; i < red[level].length; i++) {
 			raw_red[i] = 0b00000000;
 			for (int j = 0; j < red[level][i].length; j++) {
-				if (red[level][i][j] > stage) raw_red[i] &= (0b00000001 << j);
+				if (red[level][i][j] > stage) raw_red[i] |= (0b00000001 << j);
 			}
 		}
 	}
@@ -111,7 +111,6 @@ public class TimedAnimationTest2 {
 				spi.write(raw_blue);
 				spi.write(raw_green);
 				spi.write(raw_red);
-				System.out.println(raw_red[0]);
 				spi.write(raw_level);
 				level++;
 				if (level >= 8) level = 0;
