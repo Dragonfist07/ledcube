@@ -80,14 +80,14 @@ public class TimedAnimationTest2 {
 
 			render();
 			
-			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
-			if (time > 0) {
-				try {
-					Thread.sleep(time);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			} else System.out.println("Sleeptime: " + time);
+//			long time = (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000;
+//			if (time > 0) {
+//				try {
+//					Thread.sleep(time);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			} else System.out.println("Sleeptime: " + time);
 
 		}
 		console.emptyLine();
