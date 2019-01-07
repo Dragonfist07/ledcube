@@ -114,8 +114,8 @@ public class TimedAnimationTest2 {
 				spi.write(raw_level);
 				pinLatch.toggle();
 				pinLatch.toggle();
-				//System.out.println("raw_level: " + raw_level);
-				//System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
+				System.out.println("raw_level: " + String.format("%8s", Integer.toBinaryString(raw_level & 0xFF)).replace(' ', '0'));
+				System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
 				level++;
 				if (level >= 8) level = 0;
 				raw_level = (byte) (1 << level+1);
