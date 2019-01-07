@@ -97,8 +97,8 @@ public class TimedAnimationTest2 {
 	private void render() throws IOException {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				System.out.println("level: " + level);
-				System.out.println("Stage: " + i);
+//				System.out.println("level: " + level);
+//				System.out.println("Stage: " + i);
 				multiplexing(i, level);
 				spi.write(raw_blue);
 				spi.write(raw_green);
