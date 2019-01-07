@@ -33,7 +33,7 @@ public class TimedAnimationTest2 {
 	private byte[] raw_green = new byte[8];
 	private byte[] raw_blue = new byte[8];
 	private byte raw_level = 0b00000001;
-	private int level = 1;
+	private int level = 0;
 	
 	public static void main(String[] args) throws IOException {
 		TimedAnimationTest2 tat = new TimedAnimationTest2();
@@ -108,12 +108,12 @@ public class TimedAnimationTest2 {
 //				System.out.println("level: " + level);
 //				System.out.println("Stage: " + i);
 				multiplexing(i, level);
-				spi.write(raw_blue);
-				spi.write(raw_green);
+				spi.write(raw_red);
+				spi.write(raw_red);
 				spi.write(raw_red);
 				spi.write(raw_level);
-				System.out.println("raw_level: " + raw_level);
-				System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
+				//System.out.println("raw_level: " + raw_level);
+				//System.out.println("raw_red: " + String.format("%8s", Integer.toBinaryString(raw_red[i] & 0xFF)).replace(' ', '0'));
 				level++;
 				if (level >= 8) level = 0;
 				raw_level = (byte) (1 << level+1);
