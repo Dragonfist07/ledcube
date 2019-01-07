@@ -46,6 +46,14 @@ public class TimedAnimationTest2 {
         console.promptForExit();
         spi = SpiFactory.getInstance(SpiChannel.CS0, SPI_SPEED, SpiDevice.DEFAULT_SPI_MODE);
         pinLatch.setShutdownOptions(true, PinState.LOW);
+        
+        for (int i = 0; i < red.length; i++) {
+			for (int j = 0; j < red[i].length; j++) {
+				for (int j2 = 0; j2 < red[i][j].length; j2++) {
+					red[i][j][j2] = 7;
+				}
+			}
+		}
 	}
 
 	public void mainLoop() throws IOException {
@@ -115,13 +123,6 @@ public class TimedAnimationTest2 {
 	}
 
 	private void doAnimationUpdates(double delta) {
-		for (int i = 0; i < red.length; i++) {
-			for (int j = 0; j < red[i].length; j++) {
-				for (int j2 = 0; j2 < red[i][j].length; j2++) {
-					red[i][j][j2] = 7;
-				}
-			}
-		}
 	}
 
 }
