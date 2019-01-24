@@ -7,6 +7,7 @@ public class Test {
 			b1 = (byte)Integer.rotateLeft(b1, 1);
 			String s1 = String.format("%8s", Integer.toBinaryString(b1 & 0xFF)).replace(' ', '0');
 			System.out.println(s1); // 10000001
+			System.out.println(Math.log(Byte.toUnsignedInt(b1)) / Math.log(2));
 		}
 	}
 
