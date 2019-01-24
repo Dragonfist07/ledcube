@@ -15,7 +15,8 @@ import com.pi4j.util.Console;
 
 public class BaseGraph {
 	
-	public static double yFactor = 0.00002f;
+	public static double yFactor = 0.0001f;
+	//public static double yFactor = 0.0002f;
 	
 	public static SpiDevice spi = null;
     protected static final Console console = new Console();
@@ -104,7 +105,7 @@ public class BaseGraph {
 		for (int i = 0; i < green[level].length; i++) {
 			raw_green[i] = 0b00000000;
 			for (int j = 0; j < green[level][i].length; j++) {
-				if (green[level][i][j] = true) raw_green[i] |= (0b00000001 << j);
+				if (green[level][i][j] == true) raw_green[i] |= (0b00000001 << j);
 			}
 		}
 	}
