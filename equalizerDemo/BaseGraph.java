@@ -15,7 +15,7 @@ import com.pi4j.util.Console;
 
 public class BaseGraph {
 	
-	public static double yFactor = 0.001f;
+	public static double yFactor = 0.01f;
 	//public static double yFactor = 0.0002f;
 	
 	public static SpiDevice spi = null;
@@ -127,22 +127,24 @@ public class BaseGraph {
 	}
 
 	private void doAnimationUpdates(double delta) {
-		int[][] data = getData();
+		int[][][] data = getData();
 		
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (data[i][j] != 0) {
-					green[i][j][i] = true;
-					System.out.println("true");
-				} else {
-					green[i][j][i] = false;
+				for (int k = 0; k < 8; k++) {
+					if (data[i][j][k] != 0) {
+						green[i][j][k] = true;
+						System.out.println("true");
+					} else {
+						green[i][j][k] = false;
+					}
 				}
 			}
 		}
 	}
 	
-	public int[][] getData(){
-		int[][] data = new int[8][8];
+	public int[][][] getData(){
+		int[][][] data = new int[8][8][8];
 		double[] volumeData = getFrom16BitArray(MusicWrapper.out.toByteArray());
 		double sum = 0;
 		for (int i = 0; i < volumeData.length; i++) {
@@ -153,28 +155,30 @@ public class BaseGraph {
 		
 		for (int i = 0; i < data.length; i++) {
 			for (int j = 0; j < data[i].length; j++) {
-				if(sumI > 3){
-					data[i][j] = 1;
-				} else if (sumI > 2) {
-					if (i > 0 && i < 7 && j > 0 && j < 7) {
-						data[i][j] = 1;
+				for (int k = 0; k < data[i][j].length; k++) {
+					if(sumI > 3){
+						data[i][j][k] = 1;
+					} else if (sumI > 2) {
+						if (i > 0 && i < 7 && j > 0 && j < 7 && k > 0 && k < 7) {
+							data[i][j][k] = 1;
+						} else {
+							data[i][j][k] = 0;
+						}
+					} else if (sumI > 1) {
+						if (i > 1 && i < 6 && j > 1 && j < 6 && k > 1 && k < 6) {
+							data[i][j][k] = 1;
+						} else {
+							data[i][j][k] = 0;
+						}
+					} else if (sumI > 0) {
+						if (i > 2 && i < 5 && j > 2 && j < 5 && k > 2 && k < 5) {
+							data[i][j][k] = 1;
+						} else {
+							data[i][j][k] = 0;
+						}
 					} else {
-						data[i][j] = 0;
-					}
-				} else if (sumI > 1) {
-					if (i > 1 && i < 6 && j > 1 && j < 6) {
-						data[i][j] = 1;
-					} else {
-						data[i][j] = 0;
-					}
-				} else if (sumI > 0) {
-					if (i > 2 && i < 5 && j > 2 && j < 5) {
-						data[i][j] = 1;
-					} else {
-						data[i][j] = 0;
-					}
-				} else {
-					data[i][j] = 0;
+						data[i][j][k] = 0;
+					}					
 				}
 			}
 		}
