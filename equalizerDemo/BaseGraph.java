@@ -134,7 +134,7 @@ public class BaseGraph {
 				for (int k = 0; k < 8; k++) {
 					if (data[i][j][k] != 0) {
 						green[i][j][k] = true;
-						System.out.println("true");
+						//System.out.println("true");
 					} else {
 						green[i][j][k] = false;
 					}
