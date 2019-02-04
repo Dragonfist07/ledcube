@@ -102,10 +102,10 @@ public class BaseGraph {
 	}
 	
 	private void calcRaw(int level) {
-		for (int i = 0; i < green[level].length; i++) {
-			raw_green[i] = 0b00000000;
-			for (int j = 0; j < green[level][i].length; j++) {
-				if (green[level][i][j] == true) raw_green[i] |= (0b00000001 << j);
+		for (int i = 0; i < blue[level].length; i++) {
+			raw_blue[i] = 0b00000000;
+			for (int j = 0; j < blue[level][i].length; j++) {
+				if (blue[level][i][j] == true) raw_blue[i] |= (0b00000001 << j);
 			}
 		}
 	}
@@ -133,10 +133,10 @@ public class BaseGraph {
 			for (int j = 0; j < 8; j++) {
 				for (int k = 0; k < 8; k++) {
 					if (data[i][j][k] != 0) {
-						green[i][j][k] = true;
+						blue[i][j][k] = true;
 						//System.out.println("true");
 					} else {
-						green[i][j][k] = false;
+						blue[i][j][k] = false;
 					}
 				}
 			}
