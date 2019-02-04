@@ -51,3 +51,6 @@ cd ledcube
 
 sudo git pull
 ```
+
+### Pi Sound Confuguartion
+http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-Sound/Sound-Adapter.html
