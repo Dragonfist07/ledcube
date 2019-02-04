@@ -15,7 +15,7 @@ import com.pi4j.util.Console;
 
 public class BaseGraph {
 	
-	public static double yFactor = 0.00005f;
+	public static double yFactor = 0.00001f;
 	//public static double yFactor = 0.0002f;
 	
 	public static SpiDevice spi = null;
